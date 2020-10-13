@@ -27,18 +27,26 @@ class LoginView extends GetView<LoginController> {
               ),
             ),
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 32, left: 32, right: 32, bottom: 64),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Logo(),
-                  EmailLogin(),
-                  OrDivider(),
-                  SocialLogin(),
-                ],
+          Container(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(0),
+                child: SingleChildScrollView(
+                  child: Container(
+                    height: Get.mediaQuery.size.height,
+                    padding: const EdgeInsets.only(
+                        top: 32, left: 32, right: 32, bottom: 64),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Logo(),
+                        EmailLogin(),
+                        OrDivider(),
+                        SocialLogin(),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
