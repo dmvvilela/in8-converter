@@ -1,3 +1,5 @@
+import 'package:in8_converter/app/modules/history/views/history_view.dart';
+import 'package:in8_converter/app/modules/history/bindings/history_binding.dart';
 import 'package:in8_converter/app/modules/login/views/login_view.dart';
 import 'package:in8_converter/app/modules/login/bindings/login_binding.dart';
 import 'package:in8_converter/app/modules/home/views/home_view.dart';
@@ -19,6 +21,11 @@ static const INITIAL = Routes.HOME;
       name: Routes.LOGIN, 
       page:()=> LoginView(), 
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: Routes.HISTORY, 
+      page:()=> HistoryView(), 
+      binding: HistoryBinding(),
     ),
   ];
 }

@@ -7,9 +7,9 @@ void main() {
   runApp(
     GetMaterialApp(
       title: "Application",
-      initialRoute: AppPages.INITIAL,
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.LOGIN,
       getPages: AppPages.routes,
     ),
   );
 }
-  
