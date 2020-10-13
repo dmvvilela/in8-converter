@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:in8_converter/app/modules/home/views/home_view.dart';
 
 class SocialLogin extends StatelessWidget {
-  void _socialLogin(BuildContext context, String provider) {}
+  void _socialLogin(BuildContext context, String provider) {
+    Get.to(HomeView());
+  }
 
   @override
   Widget build(BuildContext context) {

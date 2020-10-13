@@ -1,4 +1,7 @@
 {
-  "input": "",
-  "output": ""
+  "inputCurrency": "",
+  "inputValue": 0.0,
+  "outputCurrency": "",
+  "outputValue": 0.0,
+  "date": ""
 }

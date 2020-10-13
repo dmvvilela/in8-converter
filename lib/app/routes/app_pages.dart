@@ -8,23 +8,22 @@ import 'package:get/get.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  
-static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.LOGIN;
 
   static final routes = [
     GetPage(
-      name: Routes.HOME, 
-      page:()=> HomeView(), 
+      name: Routes.HOME,
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.LOGIN, 
-      page:()=> LoginView(), 
+      name: Routes.LOGIN,
+      page: () => LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
-      name: Routes.HISTORY, 
-      page:()=> HistoryView(), 
+      name: Routes.HISTORY,
+      page: () => HistoryView(),
       binding: HistoryBinding(),
     ),
   ];

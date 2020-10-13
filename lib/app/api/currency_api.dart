@@ -13,8 +13,14 @@ class CurrencyApi {
           await http.get(_baseUrl + "?symbols=$outputCur&base=$inputCur");
 
       if (res.statusCode == 200) {
-        final data = Currencies.fromJson(jsonDecode(res.body));
-        print(data);
+        final json = jsonDecode(res.body);
+        final data = Currencies(
+          inputCurrency: inputCur,
+          outputCurrency: outputCur,
+          inputValue: 1,
+          outputValue: json["rates"][outputCur],
+          date: json["date"],
+        );
         return data;
       }
     } catch (e) {

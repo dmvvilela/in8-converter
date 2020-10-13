@@ -1,18 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
-  
-  final count = 0.obs;
+  final formKey = GlobalKey<FormState>();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  final autoValidate = false.obs;
 
-  @override
-  void onInit() {}
+  void setAutoValidate() => autoValidate.value = true;
 
-  @override
-  void onReady() {}
-
-  @override
-  void onClose() {}
-
-  void increment() => count.value++;
+  bool login() {
+    return formKey.currentState.validate();
+  }
 }

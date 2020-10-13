@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
+import 'package:get/get.dart';
+import 'package:in8_converter/app/modules/home/views/home_view.dart';
+import 'package:in8_converter/app/modules/login/controllers/login_controller.dart';
 
-class EmailLogin extends StatefulWidget {
-  const EmailLogin({Key key}) : super(key: key);
+class EmailLogin extends StatelessWidget {
+  final _controller = Get.find<LoginController>();
 
-  @override
-  _EmailLoginState createState() => _EmailLoginState();
-}
+  void _submit(BuildContext context) {
+    if (_controller.login())
+      Get.to(HomeView());
+    else {
+      _controller.setAutoValidate();
 
-class _EmailLoginState extends State<EmailLogin> {
-  // TODO: Usar controller
-  final _formKey = GlobalKey<FormState>();
-  String _email, _password, _errorMessage;
-
-  void _submit(BuildContext context) {}
+      Get.snackbar(
+        'Ocorreu um Erro',
+        'Verifique suas credenciais',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: _controller.formKey,
+      autovalidateMode: _controller.autoValidate.value
+          ? AutovalidateMode.always
+          : AutovalidateMode.disabled,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -26,6 +35,7 @@ class _EmailLoginState extends State<EmailLogin> {
             borderRadius: BorderRadius.circular(25.0),
             child: Material(
               child: TextFormField(
+                controller: _controller.email,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   isDense: true,
@@ -39,7 +49,6 @@ class _EmailLoginState extends State<EmailLogin> {
                 keyboardType: TextInputType.emailAddress,
                 validator: (input) =>
                     GetUtils.isEmail(input) ? null : "Email inválido.",
-                onSaved: (input) => _email = input,
               ),
             ),
           ),
@@ -48,6 +57,7 @@ class _EmailLoginState extends State<EmailLogin> {
             borderRadius: BorderRadius.circular(25.0),
             child: Material(
               child: TextFormField(
+                controller: _controller.password,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   // border: OutlineInputBorder(
@@ -64,7 +74,6 @@ class _EmailLoginState extends State<EmailLogin> {
                 validator: (input) => GetUtils.isLengthGreaterThan(input, 5)
                     ? null
                     : "Senha inválida.",
-                onSaved: (input) => _password = input,
               ),
             ),
           ),

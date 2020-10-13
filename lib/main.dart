@@ -11,7 +11,7 @@ void main() {
       child: GetMaterialApp(
         title: "Application",
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.HOME,
+        initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
         theme: ThemeData(
           primaryColor: Color(0xFFD248A9),

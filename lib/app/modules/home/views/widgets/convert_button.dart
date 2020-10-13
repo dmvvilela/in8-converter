@@ -1,6 +1,8 @@
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
+import 'package:in8_converter/app/modules/home/controllers/home_controller.dart';
 
 class ConvertButton extends StatefulWidget {
   const ConvertButton({Key key}) : super(key: key);
@@ -10,6 +12,8 @@ class ConvertButton extends StatefulWidget {
 }
 
 class _ConvertButtonState extends State<ConvertButton> {
+  final _controller = Get.find<HomeController>();
+
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((Duration duration) {
@@ -42,7 +46,11 @@ class _ConvertButtonState extends State<ConvertButton> {
         description: const Text(
             'Escolha as moedas que deseja converter e elas serão salvas em seu histórico.'),
         child: InkWell(
-          onTap: () {},
+          onTap: () async {
+            final currencies = await _controller.convertCurrencies();
+            _controller.outputCur.text =
+                currencies.outputValue.toStringAsFixed(2);
+          },
           child: Icon(
             Icons.shuffle,
             size: 38,

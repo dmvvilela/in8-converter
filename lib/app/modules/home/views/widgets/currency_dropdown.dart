@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CurrencyDropdown extends StatefulWidget {
-  const CurrencyDropdown({Key key}) : super(key: key);
+class CurrencyDropdown extends StatelessWidget {
+  final String dropdownValue;
+  final Function setDropdownValue;
 
-  @override
-  _CurrencyDropdownState createState() => _CurrencyDropdownState();
-}
-
-class _CurrencyDropdownState extends State<CurrencyDropdown> {
-  String dropdownValue = 'USD';
+  CurrencyDropdown(this.dropdownValue, this.setDropdownValue);
 
   static const currencies = [
     "CAD",
@@ -61,9 +57,7 @@ class _CurrencyDropdownState extends State<CurrencyDropdown> {
           color: Colors.deepPurpleAccent,
         ),
         onChanged: (String newValue) {
-          setState(() {
-            dropdownValue = newValue;
-          });
+          setDropdownValue(newValue);
         },
         items: currencies.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(

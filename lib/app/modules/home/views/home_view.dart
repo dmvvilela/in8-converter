@@ -8,6 +8,8 @@ import 'package:in8_converter/app/modules/login/views/widgets/label.dart';
 import 'package:in8_converter/app/modules/login/views/widgets/title_bar.dart';
 
 class HomeView extends GetView<HomeController> {
+  final _controller = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,22 +34,36 @@ class HomeView extends GetView<HomeController> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(28),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Label('MOEDA A SER CONVERTIDA'),
-                CurrencyDropdown(),
-                InputField(),
-                Padding(padding: EdgeInsets.all(22)),
-                ConvertButton(),
-                Padding(padding: EdgeInsets.all(22)),
-                Label('MOEDA DESEJADA'),
-                CurrencyDropdown(),
-                InputField(
-                  enabled: false,
-                ),
-              ],
+            child: Form(
+              key: _controller.formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Label('MOEDA A SER CONVERTIDA'),
+                  Obx(
+                    () => CurrencyDropdown(
+                      _controller.inputDropdown.value,
+                      _controller.setInputDropdownValue,
+                    ),
+                  ),
+                  InputField(_controller.inputCur),
+                  Padding(padding: EdgeInsets.all(22)),
+                  ConvertButton(),
+                  Padding(padding: EdgeInsets.all(22)),
+                  Label('MOEDA DESEJADA'),
+                  Obx(
+                    () => CurrencyDropdown(
+                      _controller.outputDropdown.value,
+                      _controller.setOutputDropdownValue,
+                    ),
+                  ),
+                  InputField(
+                    _controller.outputCur,
+                    enabled: false,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
