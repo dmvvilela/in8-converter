@@ -41,18 +41,6 @@ class SocialLogin extends StatelessWidget {
             ),
           ),
         ),
-        // Text(
-        //   '- ou - ',
-        //   style: Theme.of(context)
-        //       .textTheme
-        //       .headline6
-        //       .merge(
-        //         TextStyle(
-        //           color: Color(0xFF707070),
-        //           fontWeight: FontWeight.w600,
-        //         ),
-        //       ),
-        // ),
         FittedBox(
           fit: BoxFit.scaleDown,
           child: SizedBox(

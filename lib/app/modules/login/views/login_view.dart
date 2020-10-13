@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:in8_converter/app/modules/login/controllers/login_controller.dart';
+import 'package:in8_converter/app/modules/login/views/widgets/email_login.dart';
 import 'package:in8_converter/app/modules/login/views/widgets/logo.dart';
+import 'package:in8_converter/app/modules/login/views/widgets/or_divider.dart';
 import 'package:in8_converter/app/modules/login/views/widgets/social_login.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -30,9 +32,11 @@ class LoginView extends GetView<LoginController> {
               padding: const EdgeInsets.only(
                   top: 32, left: 32, right: 32, bottom: 64),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Logo(),
-                  Spacer(),
+                  EmailLogin(),
+                  OrDivider(),
                   SocialLogin(),
                 ],
               ),

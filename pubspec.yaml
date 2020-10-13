@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  flutter_auth_buttons: 0.10.0
+  feature_discovery: 0.12.1
   http: 0.12.2
   get: 3.13.2
   flutter:
