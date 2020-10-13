@@ -32,9 +32,10 @@ class _ConvertButtonState extends State<ConvertButton> {
     const shuffleIcon = Icon(Icons.shuffle, size: 32);
 
     return Container(
+      padding: EdgeInsets.all(4),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(color: Theme.of(context).primaryColor, blurRadius: 16),
           ]),
@@ -44,16 +45,27 @@ class _ConvertButtonState extends State<ConvertButton> {
         contentLocation: ContentLocation.below,
         title: const Text('Converta aqui'),
         description: const Text(
-            'Escolha as moedas que deseja converter e elas serão salvas em seu histórico.'),
+            'Escolha as moedas que deseja\nconverter e elas serão salvas\nem seu histórico.'),
         child: InkWell(
           onTap: () async {
             final currencies = await _controller.convertCurrencies();
+            if (currencies == null) {
+              Get.snackbar(
+                'Ocorreu um erro',
+                _controller.errorMessage,
+                snackPosition: SnackPosition.BOTTOM,
+              );
+              return;
+            }
+
             _controller.outputCur.text =
                 currencies.outputValue.toStringAsFixed(2);
+
+            _controller.saveOnHistory(currencies);
           },
           child: Icon(
             Icons.shuffle,
-            size: 38,
+            size: 36,
             color: Colors.white,
           ),
         ),

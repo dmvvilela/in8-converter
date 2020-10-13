@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:in8_converter/app/api/currency_api.dart';
 import 'package:in8_converter/app/modules/home/models/currencies_model.dart';
 
 class HomeController extends GetxController {
   final _currencyApi = CurrencyApi();
+  final _box = GetStorage();
   final formKey = GlobalKey<FormState>();
   final inputCur = TextEditingController();
   final outputCur = TextEditingController();
   final inputDropdown = "USD".obs;
   final outputDropdown = "BRL".obs;
+  final autovalidate = false.obs;
   String errorMessage = "";
 
   @override
@@ -28,6 +31,8 @@ class HomeController extends GetxController {
   void setOutputDropdownValue(value) {
     outputDropdown.value = value;
   }
+
+  void setAutoValidade() => autovalidate.value = true;
 
   Future<Currencies> convertCurrencies() async {
     if (!formKey.currentState.validate()) {
@@ -51,8 +56,19 @@ class HomeController extends GetxController {
       outputCurrency: outputDropdown.value,
       inputValue: input,
       outputValue: currencies.outputValue * input,
+      date: currencies.date,
     );
 
     return converted;
+  }
+
+  void saveOnHistory(Currencies currencies) {
+    List<dynamic> history = _box.read('history');
+    if (history == null) {
+      history = List<dynamic>();
+    }
+
+    history.add(currencies.toJson());
+    _box.write('history', history);
   }
 }

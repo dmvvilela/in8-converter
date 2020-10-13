@@ -12,11 +12,11 @@ class ConversionTile extends StatelessWidget {
         children: [
           Text('${currencies.inputCurrency} ',
               style: TextStyle(fontWeight: FontWeight.bold)),
-          Text('${currencies.inputValue} '),
+          Text('${currencies.inputValue.toStringAsFixed(2)} '),
           Icon(Icons.arrow_right),
           Text(' ${currencies.outputCurrency} ',
               style: TextStyle(fontWeight: FontWeight.bold)),
-          Text('3${currencies.outputValue}'),
+          Text('${currencies.outputValue.toStringAsFixed(2)}'),
         ],
       ),
       subtitle: Text('${currencies.date}'),

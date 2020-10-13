@@ -1,18 +1,19 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HistoryController extends GetxController {
-  //TODO: Implement HistoryController
-  
-  final count = 0.obs;
+  final _box = GetStorage();
+  List<dynamic> history;
 
   @override
-  void onInit() {}
+  void onInit() {
+    history = _box.read('history');
+    _box.listenKey('history', (h) => history = h);
+  }
 
   @override
   void onReady() {}
 
   @override
   void onClose() {}
-
-  void increment() => count.value++;
 }

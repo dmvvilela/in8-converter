@@ -34,35 +34,40 @@ class HomeView extends GetView<HomeController> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(28),
-            child: Form(
-              key: _controller.formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Label('MOEDA A SER CONVERTIDA'),
-                  Obx(
-                    () => CurrencyDropdown(
-                      _controller.inputDropdown.value,
-                      _controller.setInputDropdownValue,
+            child: Obx(
+              () => Form(
+                key: _controller.formKey,
+                autovalidateMode: _controller.autovalidate.value
+                    ? AutovalidateMode.always
+                    : AutovalidateMode.disabled,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Label('MOEDA A SER CONVERTIDA'),
+                    Obx(
+                      () => CurrencyDropdown(
+                        _controller.inputDropdown.value,
+                        _controller.setInputDropdownValue,
+                      ),
                     ),
-                  ),
-                  InputField(_controller.inputCur),
-                  Padding(padding: EdgeInsets.all(22)),
-                  ConvertButton(),
-                  Padding(padding: EdgeInsets.all(22)),
-                  Label('MOEDA DESEJADA'),
-                  Obx(
-                    () => CurrencyDropdown(
-                      _controller.outputDropdown.value,
-                      _controller.setOutputDropdownValue,
+                    InputField(_controller.inputCur),
+                    Padding(padding: EdgeInsets.all(22)),
+                    ConvertButton(),
+                    Padding(padding: EdgeInsets.all(22)),
+                    Label('MOEDA DESEJADA'),
+                    Obx(
+                      () => CurrencyDropdown(
+                        _controller.outputDropdown.value,
+                        _controller.setOutputDropdownValue,
+                      ),
                     ),
-                  ),
-                  InputField(
-                    _controller.outputCur,
-                    enabled: false,
-                  ),
-                ],
+                    InputField(
+                      _controller.outputCur,
+                      enabled: false,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
