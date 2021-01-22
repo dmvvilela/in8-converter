@@ -15,13 +15,21 @@ O login por e-mail irá validar antes se o e-mail é válido e a senha possui ao
 
 ## Screenshots
 
-![Login](assets/images/views/login_screenshot.png)
+<img src="assets/images/views/login_screenshot.png" width="200" />
+<img src="assets/images/views/login_error_screenshot.png" width="200" />
+<img src="assets/images/views/feature_discovery_screenshot_1.png" width="200" />
+<img src="assets/images/views/feature_discovery_screenshot_2.png" width="200" />
+<img src="assets/images/views/home_screenshot_1.png" width="200" />
+<img src="assets/images/views/home_screenshot_2.png" width="200" />
+<img src="assets/images/views/history_screenshot.png" width="200" />
+
+<!-- ![Login](assets/images/views/login_screenshot.png)
 ![Login Error](assets/images/views/login_error_screenshot.png)
 ![Feature Discovery 1](assets/images/views/feature_discovery_screenshot_1.png)
 ![Feature Discovery 2](assets/images/views/feature_discovery_screenshot_2.png)
 ![Home 1](assets/images/views/home_screenshot_1.png)
 ![Home 2](assets/images/views/home_screenshot_2.png)
-![History](assets/images/views/history_screenshot.png)
+![History](assets/images/views/history_screenshot.png) -->
 
 ## Possíveis melhorias
 
